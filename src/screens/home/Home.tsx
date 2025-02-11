@@ -1,15 +1,18 @@
 import { Card, CardActionArea, CardContent, CardMedia, Grid2, Paper, Typography } from "@mui/material";
 import homeScreenImages from '../../assets/images/home-screen'
+import { useContext } from "react";
+import { DarkModeContext } from "../../data/contexts/DarkMode.context";
 
 interface HomeProps {
     onPageSelect: (pageName: string) => void
 }
 
 export default function Home({ onPageSelect }: HomeProps) {
+    const darkMode = useContext(DarkModeContext)
     const handleMenuClick = (pageName: string) => {
         onPageSelect(pageName)
     }
-    return <Paper>
+    return <Paper style={{ backgroundColor: darkMode ? "#444" : undefined }}>
         <Grid2 padding={2}>
             <Card>
                 <CardActionArea onClick={() => { handleMenuClick('habits') }}>

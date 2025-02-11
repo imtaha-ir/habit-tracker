@@ -1,5 +1,7 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material"
 import logoSmall from '../../assets/logo-small.png'
+import { useContext } from "react"
+import { DarkModeContext } from "../../data/contexts/DarkMode.context"
 
 interface HeaderProps {
   title: string
@@ -7,7 +9,8 @@ interface HeaderProps {
 }
 
 export default function Header({ title, onLogoClick }: HeaderProps) {
-  return <AppBar position="sticky">
+  const darkMode = useContext(DarkModeContext)
+  return <AppBar position="sticky" style={{ backgroundColor: darkMode ? "#222" : undefined }}>
     <Toolbar>
       <IconButton onClick={onLogoClick}>
         <img src={logoSmall} />
