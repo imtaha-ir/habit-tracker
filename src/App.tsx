@@ -2,9 +2,11 @@ import './App.css';
 import Header from './components/header/Header';
 import Home from './screens/home/Home';
 import About from './screens/about/About';
-import { useContext, useState } from 'react';
-import DarkModeProvider, { DarkModeContext } from './data/contexts/DarkMode.context';
+import { useState } from 'react';
+import DarkModeProvider from './data/contexts/DarkMode.context';
 import SettingsPage from './screens/settings/settingsPage';
+import HabitsPage from './screens/habits/HabitsPage';
+import HabitProvider from './data/contexts/HabitsDataContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -16,12 +18,15 @@ function App() {
   }
   return (
     <DarkModeProvider>
-      <div className="App">
-        <Header title='Habit Tracker' onLogoClick={goHome} />
-        {currentPage == 'home' && <Home onPageSelect={changePage} />}
-        {currentPage == 'about' && <About />}
-        {currentPage == 'settings' && <SettingsPage />}
-      </div>
+      <HabitProvider>
+        <div className="App">
+          <Header title='Habit Tracker' onLogoClick={goHome} />
+          {currentPage == 'home' && <Home onPageSelect={changePage} />}
+          {currentPage == 'about' && <About />}
+          {currentPage == 'settings' && <SettingsPage />}
+          {currentPage == 'habits' && <HabitsPage />}
+        </div>
+      </HabitProvider>
     </DarkModeProvider>
   );
 }

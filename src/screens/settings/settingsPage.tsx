@@ -7,7 +7,13 @@ export default function SettingsPage() {
     return <Paper style={{ backgroundColor: darkMode ? "#444" : undefined, color: darkMode ? "#ccc" : undefined }}>
         <Box p={1}>
             <Typography variant="subtitle1">App Settings</Typography>
-            <FormControlLabel label="Dark Mode" control={<Switch checked={darkMode} onClick={() => { setDarkMode(!darkMode) }} />} labelPlacement="start" />
+            <FormControlLabel
+                label="Dark Mode"
+                control={
+                    <Switch checked={darkMode}
+                        onClick={() => { setDarkMode(!darkMode) }} />
+                }
+                labelPlacement="start" />
         </Box>
     </Paper>
 }
