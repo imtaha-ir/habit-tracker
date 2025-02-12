@@ -8,10 +8,13 @@ export default function HabitsPage() {
     const { darkMode } = useContext(DarkModeContext)
     const cardStyle: CSSProperties = {
         marginTop: 8,
-        backgroundColor: darkMode ? "#444" : undefined,
+        backgroundColor: darkMode ? "#555" : undefined,
         color: darkMode ? "#ccc" : undefined
     }
-    return <Paper style={cardStyle}>
+    return <Paper style={{
+        backgroundColor: darkMode ? "#444" : undefined,
+        color: darkMode ? "#ccc" : undefined
+    }}>
         <Box p={1}>
             <Typography variant="subtitle1">Habits</Typography>
             {habits.map((habitName) =>
