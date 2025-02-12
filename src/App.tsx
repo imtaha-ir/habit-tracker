@@ -4,6 +4,7 @@ import Home from './screens/home/Home';
 import About from './screens/about/About';
 import { useContext, useState } from 'react';
 import DarkModeProvider, { DarkModeContext } from './data/contexts/DarkMode.context';
+import SettingsPage from './screens/settings/settingsPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home')
@@ -19,6 +20,7 @@ function App() {
         <Header title='Habit Tracker' onLogoClick={goHome} />
         {currentPage == 'home' && <Home onPageSelect={changePage} />}
         {currentPage == 'about' && <About />}
+        {currentPage == 'settings' && <SettingsPage />}
       </div>
     </DarkModeProvider>
   );
