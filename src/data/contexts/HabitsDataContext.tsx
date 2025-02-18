@@ -1,6 +1,9 @@
 import { createContext, ReactNode, useState } from "react"
 
-type Habit = string
+type Habit = {
+    name: string;
+    completed: boolean;
+}
 type HabitDataContextType = {
     habits: Habit[]
     addHabit: (habit: Habit) => void
@@ -14,12 +17,14 @@ export const HabitContext = createContext<HabitDataContextType>({
 })
 
 export default function HabitProvider({ children }: { children: ReactNode }) {
-    const [habits, setHabits] = useState<Habit[]>(['Wakeup early', 'Gym', 'Learn English'])
+    const [habits, setHabits] = useState<Habit[]>([{ name: "Wakeup early", completed: false }, { name: "Gym", completed: true }])
     const addHabit = (newHabit: Habit) => {
-        setHabits([...habits,newHabit])
+        setHabits([...habits, newHabit])
     }
     const removeHabitAt = (index: number) => {
-        // TODO: remove habit at index
+        const newHabits = [...habits]
+        newHabits.splice(index, 1) // removes habits[index]
+        setHabits(newHabits)
     }
     return <HabitContext.Provider value={{ habits, addHabit, removeHabitAt }}>
         {children}

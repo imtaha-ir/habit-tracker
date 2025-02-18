@@ -1,11 +1,12 @@
-import { Box, Button, Card, CardActionArea, CardActions, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardActionArea, CardActions, IconButton, Paper, TextField, Typography } from "@mui/material";
 import { ChangeEvent, CSSProperties, useContext, useState } from "react";
 import { HabitContext } from "../../data/contexts/HabitsDataContext";
 import { DarkModeContext } from "../../data/contexts/DarkMode.context";
+import { DeleteForever, Done } from "@mui/icons-material";
 
 export default function HabitsPage() {
     const [newHabitName, setNewHabitName] = useState('')
-    const { habits, addHabit } = useContext(HabitContext)
+    const { habits, addHabit, removeHabitAt } = useContext(HabitContext)
     const { darkMode } = useContext(DarkModeContext)
     const cardStyle: CSSProperties = {
         marginTop: 8,
@@ -16,7 +17,10 @@ export default function HabitsPage() {
         setNewHabitName(event.target.value)
     }
     function handleAddNewHabit() {
-        addHabit(newHabitName)
+        addHabit({ name: newHabitName, completed: false })
+    }
+    function handleDeleteClick(idx: number) {
+        removeHabitAt(idx)
     }
 
     return <Paper style={{
@@ -25,13 +29,26 @@ export default function HabitsPage() {
     }}>
         <Box p={1}>
             <Typography variant="subtitle1">Habits</Typography>
-            {habits.map((habitName) =>
+            {habits.map((habitItem, habitIndex) =>
                 <Card style={cardStyle}>
                     <Box p={1}>
                         <Typography variant="subtitle2">
-                            {habitName}
+                            {habitItem.name}
                         </Typography>
+                        {habitItem.completed && <Done />}
                     </Box>
+                    <CardActions>
+                        <IconButton
+                            color="error"
+                            onClick={
+                                () => {
+                                    handleDeleteClick(habitIndex)
+                                }
+                            }
+                        >
+                            <DeleteForever />
+                        </IconButton>
+                    </CardActions>
                 </Card>
             )
             }
