@@ -1,5 +1,5 @@
 import { GlobalStyles } from "@mui/material";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 export type DarkModeContextType = {
     darkMode: boolean;
@@ -12,9 +12,20 @@ interface DarkModeProviderProps {
 }
 
 export default function DarkModeProvider({ children }: DarkModeProviderProps) {
-    const [darkMode, setDarkMode] = useState(false)
-    return <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
-        <GlobalStyles styles={{ body: { backgroundColor: darkMode ? "#444" : undefined } }} />
+    const [darkModeState, setDarkModeState] = useState(false)
+    const handleChangeDarkMode = (mode: boolean) => {
+        setDarkModeState(mode)
+        const modeStr = mode ? "dark" : "light"
+        localStorage.setItem("darkMode", modeStr)
+    }
+    useEffect(() => {
+        const modeStr = localStorage.getItem("darkMode")
+        const mode = (modeStr == "dark")
+        handleChangeDarkMode(mode)
+    }, [])
+
+    return <DarkModeContext.Provider value={{ darkMode: darkModeState, setDarkMode: handleChangeDarkMode }}>
+        <GlobalStyles styles={{ body: { backgroundColor: darkModeState ? "#444" : undefined } }} />
         {children}
     </DarkModeContext.Provider>
 }

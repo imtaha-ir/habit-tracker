@@ -2,20 +2,27 @@ import './App.css';
 import Header from './components/header/Header';
 import Home from './screens/home/Home';
 import About from './screens/about/About';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DarkModeProvider from './data/contexts/DarkMode.context';
 import SettingsPage from './screens/settings/settingsPage';
 import HabitsPage from './screens/habits/HabitsPage';
 import HabitProvider from './data/contexts/HabitsDataContext';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home')
+  const [currentPage, setCurrentPage] = useState('')
   const changePage = (pageName: string) => {
     setCurrentPage(pageName)
+    localStorage.setItem("currentPage", pageName)
   }
   const goHome = () => {
-    setCurrentPage('home')
+    changePage('home')
   }
+
+  useEffect(() => {
+    const pageName = localStorage.getItem("currentPage")
+    changePage(pageName ?? "home")
+  }, [])
+
   return (
     <DarkModeProvider>
       <HabitProvider>
