@@ -7,6 +7,7 @@ import DarkModeProvider from './data/contexts/DarkMode.context';
 import SettingsPage from './screens/settings/settingsPage';
 import HabitsPage from './screens/habits/HabitsPage';
 import HabitProvider from './data/contexts/HabitsDataContext';
+import DashboardPage from './screens/dashboard/DashboardPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('')
@@ -32,6 +33,7 @@ function App() {
           {currentPage == 'about' && <About />}
           {currentPage == 'settings' && <SettingsPage />}
           {currentPage == 'habits' && <HabitsPage />}
+          {currentPage == 'dashboard' && <DashboardPage />}
         </div>
       </HabitProvider>
     </DarkModeProvider>
