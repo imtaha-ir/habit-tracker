@@ -1,9 +1,12 @@
-import { createContext, ReactNode, useState } from "react"
+import { createContext, ReactNode, useEffect, useState } from "react"
 
 export type Habit = {
     name: string;
     completed: boolean;
+    completedToday?: boolean;
+    lastDone: Date | null;
     categoryId?: number
+    dayStreak:number
 }
 type HabitDataContextType = {
     habits: Habit[]
@@ -18,19 +21,32 @@ export const HabitContext = createContext<HabitDataContextType>({
 })
 
 export default function HabitProvider({ children }: { children: ReactNode }) {
-    const [habits, setHabits] = useState<Habit[]>(
-        [
-            { name: "Wakeup early", completed: false, categoryId: 3 },
-            { name: "Gym", completed: true, categoryId: 1 }
-        ])
+    const [habits, setHabits] = useState<Habit[]>([])
+    const saveHabitsToLocalStorage = (habitsToSave: Habit[]) => {
+        const strHabits = JSON.stringify(habitsToSave)
+        localStorage.setItem('habits', strHabits)
+    }
+    const loadHabitsFromLocalStorage = () => {
+        const strHabits = localStorage.getItem('habits')
+        if (strHabits) {
+            const savedHabits: Habit[] = JSON.parse(strHabits)
+            setHabits(savedHabits)
+        }
+    }
     const addHabit = (newHabit: Habit) => {
-        setHabits([...habits, newHabit])
+        const habitsToSave=[...habits, newHabit]
+        setHabits(habitsToSave)
+        saveHabitsToLocalStorage(habitsToSave)
     }
     const removeHabitAt = (index: number) => {
         const newHabits = [...habits]
         newHabits.splice(index, 1) // removes habits[index]
         setHabits(newHabits)
+        saveHabitsToLocalStorage(newHabits)
     }
+    useEffect(()=>{
+        loadHabitsFromLocalStorage()
+    },[])
     return <HabitContext.Provider value={{ habits, addHabit, removeHabitAt }}>
         {children}
     </HabitContext.Provider>

@@ -12,7 +12,13 @@ export default function NewHabitForm({ style }: NewHabitFormProps) {
     const [newHabitName, setNewHabitName] = useState('')
     const [categoryId, setCategoryId] = useState(1)
     function handleAddNewHabit() {
-        addHabit({ name: newHabitName, completed: false, categoryId })
+        addHabit({
+            name: newHabitName,
+            completed: false,
+            categoryId,
+            lastDone: null,
+            dayStreak: 0
+        })
     }
     function handleNewHabitNameChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
         setNewHabitName(event.target.value)
