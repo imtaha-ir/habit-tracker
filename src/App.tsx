@@ -8,6 +8,7 @@ import SettingsPage from './screens/settings/settingsPage';
 import HabitsPage from './screens/habits/HabitsPage';
 import HabitProvider from './data/contexts/HabitsDataContext';
 import DashboardPage from './screens/dashboard/DashboardPage';
+import { Container } from '@mui/material';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('')
@@ -27,14 +28,14 @@ function App() {
   return (
     <DarkModeProvider>
       <HabitProvider>
-        <div className="App">
+        <Container maxWidth="xl"  className="App">
           <Header title='Habit Tracker' onLogoClick={goHome} />
           {currentPage == 'home' && <Home onPageSelect={changePage} />}
           {currentPage == 'about' && <About />}
           {currentPage == 'settings' && <SettingsPage />}
           {currentPage == 'habits' && <HabitsPage />}
           {currentPage == 'dashboard' && <DashboardPage />}
-        </div>
+        </Container>
       </HabitProvider>
     </DarkModeProvider>
   );
