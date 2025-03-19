@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActionArea, CardActions, IconButton, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, CardActionArea, CardActions, Grid2, IconButton, Paper, TextField, Typography } from "@mui/material";
 import { ChangeEvent, CSSProperties, useContext, useState } from "react";
 import { HabitContext } from "../../data/contexts/HabitsDataContext";
 import { DarkModeContext } from "../../data/contexts/DarkMode.context";
@@ -25,15 +25,17 @@ export default function HabitsPage() {
         color: darkMode ? "#ccc" : undefined
     }}>
         <Box p={1}>
-            <Typography variant="subtitle1">Habits</Typography>
-            {habits.map((habitItem, habitIndex) =>
-                <HabitCard
-                    habit={habitItem}
-                    style={cardStyle}
-                    onDeleteClick={() => {
-                        handleDeleteClick(habitIndex)
-                    }} />
-            )}
+            <Typography variant="h3">Habits</Typography>
+            <Grid2 container spacing={2} alignItems={"stretch"}>
+                {habits.map((habitItem, habitIndex) =>
+                    <HabitCard
+                        habit={habitItem}
+                        style={cardStyle}
+                        onDeleteClick={() => {
+                            handleDeleteClick(habitIndex)
+                        }} />
+                )}
+            </Grid2>
             <NewHabitForm style={cardStyle} />
         </Box>
     </Paper>

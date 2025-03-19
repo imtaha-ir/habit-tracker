@@ -27,7 +27,7 @@ const features = [
   },
   {
     title: "Custom Reminders",
-    description: "Set personalized reminders to stay on track.",
+    description: "Set personalized reminders to stay on track. Set personalized reminders to stay on track.",
     icon: <CheckCircleIcon />
   },
   {
@@ -54,6 +54,7 @@ const AboutPage = () => {
   // apply DarkMode 
   const cardStyle: CSSProperties = {
     marginTop: 8,
+    height: "100%",
     backgroundColor: darkMode ? "#555" : undefined,
     color: darkMode ? "#ccc" : undefined
   }
@@ -84,7 +85,7 @@ const AboutPage = () => {
       </Box>
 
       {/* Features */}
-      <Grid2 container spacing={1}>
+      <Grid2 container spacing={1} justifyContent={"space-around"} alignItems={"stretch"}>
         {features.map((feature, index) => (
           <Grid2 key={index} size={{ xs: 12, md: 6, lg: 4, xl: 3 }}>
             <Card style={cardStyle}>
@@ -100,7 +101,7 @@ const AboutPage = () => {
 
       {/* Team */}
       <Typography variant="h4" sx={{ mt: 5, mb: 2 }}>Meet Our Team</Typography>
-      <Grid2 container spacing={3}>
+      <Grid2 container spacing={3} justifyContent={"center"} >
         {team.map((member, index) => (
           <Grid2 key={index} size={{ xs: 12, md: 6, xl: 4 }}>
             <Card style={cardStyle}>

@@ -8,7 +8,7 @@ import SettingsPage from './screens/settings/settingsPage';
 import HabitsPage from './screens/habits/HabitsPage';
 import HabitProvider from './data/contexts/HabitsDataContext';
 import DashboardPage from './screens/dashboard/DashboardPage';
-import { Container } from '@mui/material';
+import { Container, Grid2 } from '@mui/material';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('')
@@ -28,13 +28,15 @@ function App() {
   return (
     <DarkModeProvider>
       <HabitProvider>
-        <Container maxWidth="xl"  className="App">
+        <Container maxWidth="xl" style={{ padding: 0 }} className="App">
           <Header title='Habit Tracker' onLogoClick={goHome} />
-          {currentPage == 'home' && <Home onPageSelect={changePage} />}
-          {currentPage == 'about' && <About />}
-          {currentPage == 'settings' && <SettingsPage />}
-          {currentPage == 'habits' && <HabitsPage />}
-          {currentPage == 'dashboard' && <DashboardPage />}
+          <Grid2 p={1}>
+            {currentPage == 'home' && <Home onPageSelect={changePage} />}
+            {currentPage == 'about' && <About />}
+            {currentPage == 'settings' && <SettingsPage />}
+            {currentPage == 'habits' && <HabitsPage />}
+            {currentPage == 'dashboard' && <DashboardPage />}
+          </Grid2>
         </Container>
       </HabitProvider>
     </DarkModeProvider>

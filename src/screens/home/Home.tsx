@@ -8,75 +8,78 @@ interface HomeProps {
 }
 
 export default function Home({ onPageSelect }: HomeProps) {
-    const {darkMode} = useContext(DarkModeContext)
+    const { darkMode } = useContext(DarkModeContext)
     const handleMenuClick = (pageName: string) => {
         onPageSelect(pageName)
     }
-    const cardStyle:CSSProperties = darkMode ? { backgroundColor: "#555", color: "#ccc" } : {}
+    const cardStyle: CSSProperties = darkMode ? { backgroundColor: "#555", color: "#ccc" } : {}
+    const cardSize = { xs: 12, md: 6, lg: 3 }
     return <Paper style={{ backgroundColor: darkMode ? "#444" : undefined }}>
-        <Grid2 padding={2}>
-            <Card style={cardStyle}>
-                <CardActionArea onClick={() => { handleMenuClick('habits') }}>
-                    <CardMedia component='img'
-                        height={150}
-                        image={darkMode ? homeScreenImages.imageHabitsDark : homeScreenImages.imageHabits}
-                    />
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            Habits
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Grid2>
+        <Grid2 container>
+            <Grid2 padding={2} size={cardSize}>
+                <Card style={cardStyle}>
+                    <CardActionArea onClick={() => { handleMenuClick('habits') }}>
+                        <CardMedia component='img'
+                            height={150}
+                            image={darkMode ? homeScreenImages.imageHabitsDark : homeScreenImages.imageHabits}
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                Habits
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid2>
 
-        <Grid2 padding={2}>
-            <Card style={cardStyle}>
-                <CardActionArea onClick={() => { handleMenuClick('dashboard') }}>
-                    <CardMedia component='img'
-                        height={150}
-                        image={darkMode ? homeScreenImages.imageDashboardDark : homeScreenImages.imageDashboard}
+            <Grid2 padding={2} size={cardSize}>
+                <Card style={cardStyle}>
+                    <CardActionArea onClick={() => { handleMenuClick('dashboard') }}>
+                        <CardMedia component='img'
+                            height={150}
+                            image={darkMode ? homeScreenImages.imageDashboardDark : homeScreenImages.imageDashboard}
 
-                    />
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            Dashboard
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Grid2>
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                Dashboard
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid2>
 
-        <Grid2 padding={2}>
-            <Card style={cardStyle}>
-                <CardActionArea onClick={() => { handleMenuClick('settings') }}>
-                    <CardMedia component='img'
-                        height={150}
-                        image={darkMode ? homeScreenImages.imageSettingsDark : homeScreenImages.imageSettings}
-                    />
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            Settings
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
-        </Grid2>
+            <Grid2 padding={2} size={cardSize}>
+                <Card style={cardStyle}>
+                    <CardActionArea onClick={() => { handleMenuClick('settings') }}>
+                        <CardMedia component='img'
+                            height={150}
+                            image={darkMode ? homeScreenImages.imageSettingsDark : homeScreenImages.imageSettings}
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                Settings
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid2>
 
-        <Grid2 padding={2}>
-            <Card style={cardStyle}>
-                <CardActionArea onClick={() => { handleMenuClick('about') }}>
-                    <CardMedia component='img'
-                        height={150}
-                        image={darkMode ? homeScreenImages.imageAboutDark : homeScreenImages.imageAbout}
-                    />
-                    <CardContent>
-                        <Typography variant="h5" component="div">
-                            About
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-            </Card>
+            <Grid2 padding={2} size={cardSize}>
+                <Card style={cardStyle}>
+                    <CardActionArea onClick={() => { handleMenuClick('about') }}>
+                        <CardMedia component='img'
+                            height={150}
+                            image={darkMode ? homeScreenImages.imageAboutDark : homeScreenImages.imageAbout}
+                        />
+                        <CardContent>
+                            <Typography variant="h5" component="div">
+                                About
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+            </Grid2>
         </Grid2>
     </Paper>
 }
