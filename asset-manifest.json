@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/habit-tracker/static/css/main.e6c13ad2.css",
+    "main.js": "/habit-tracker/static/js/main.1521492a.js",
+    "static/js/453.6f276dca.chunk.js": "/habit-tracker/static/js/453.6f276dca.chunk.js",
+    "static/media/dashboard-dark.jpg": "/habit-tracker/static/media/dashboard-dark.1e31181290d94a043e8f.jpg",
+    "static/media/settings-dark.jpg": "/habit-tracker/static/media/settings-dark.49545a7cdfa908cb216f.jpg",
+    "static/media/about-dark.jpg": "/habit-tracker/static/media/about-dark.b6c3dc937d9542309010.jpg",
+    "static/media/settings.jpg": "/habit-tracker/static/media/settings.e3b7f3ede0b6ffe768d5.jpg",
+    "static/media/habits-dark.jpg": "/habit-tracker/static/media/habits-dark.7824c1055722e3dd47a5.jpg",
+    "static/media/dashboard.jpg": "/habit-tracker/static/media/dashboard.aeffda264f89f3601d63.jpg",
+    "static/media/about.jpg": "/habit-tracker/static/media/about.65391322598d0a907275.jpg",
+    "static/media/habits.jpg": "/habit-tracker/static/media/habits.87f4d0c627d2a6f78faa.jpg",
+    "index.html": "/habit-tracker/index.html",
+    "main.e6c13ad2.css.map": "/habit-tracker/static/css/main.e6c13ad2.css.map",
+    "main.1521492a.js.map": "/habit-tracker/static/js/main.1521492a.js.map",
+    "453.6f276dca.chunk.js.map": "/habit-tracker/static/js/453.6f276dca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.1521492a.js"
+  ]
+}
